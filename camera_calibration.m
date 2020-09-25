@@ -58,3 +58,10 @@ undistortedImage = undistortImage(originalImage, cameraParams);
 % See additional examples of how to use the calibration data.  At the prompt type:
 % showdemo('MeasuringPlanarObjectsExample')
 % showdemo('StructureFromMotionExample')
+
+img=imread('C:\Users\DELL\Documents\endoscope\data\cam_calibration\cam_cal_1.tiff');
+[correct_img, new] = undistortImage(img,cameraParams);
+figure;
+subplot(1,2,1); imshow(img);title('Original Image');
+subplot(1,2,2); imshow(correct_img);title('Distortion Correction Image');
+imwrite(correct_img,'cor_img_1.tiff');

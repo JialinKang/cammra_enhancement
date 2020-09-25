@@ -1,0 +1,15 @@
+I=im2double(imread('C:\Users\DELL\Documents\endoscope\code\gitcode\cammra_enhancement\cor_img_1.tiff'));
+R=I(:,:,1);G=I(:,:,2);B=I(:,:,3);
+sumRGB=R+G+B;
+sumsort=sort(sumRGB(:));
+count=round(size(sumsort,2)*0.9);
+T=sumsort(count);
+index=sumRGB>T;
+KR=max(R(:))/mean(R(index));
+KG=max(G(:))/mean(G(index));
+KB=max(B(:))/mean(B(index));
+R1=R*KR;G1=G*KG;B1=B*KB;
+out=cat(3,R1,G1,B1);
+figure;
+subplot(1,2,1);imshow(I);title('Original  Image');
+subplot(1,2,2);imshow(out);title('Distortion Correction Image');
